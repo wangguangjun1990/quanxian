@@ -11,11 +11,6 @@
    <!-- <logger name="com.hzit.employee.core.mapper" level="DEBUG"/>-->
     <logger name="com.wang.dao.mapper" level="DEBUG"/>
 
-
-<!--    <root level="INFO">
-        <appender-ref ref="CONSOLE" />
-    </root>-->
-
     <root level="INFO">
         <appender-ref ref="CONSOLE" />
     </root>
