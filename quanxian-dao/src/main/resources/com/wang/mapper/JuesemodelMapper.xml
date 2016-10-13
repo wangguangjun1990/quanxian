@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wang.mapper.JuesemodelMapper">
+
+    <sql id="juesemodelBaseColumnSql">
+        jsid,
+        modelid
+    </sql>
+
+    <sql id="juesemodelBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.jsid)">
+                    jsid = #{map.jsid}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.modelid)">
+                    AND modelid = #{map.modelid}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertJuesemodel" parameterType="com.wang.entity.Juesemodel">
+        INSERT INTO juesemodel(
+        <include refid="juesemodelBaseColumnSql"/>
+        )VALUES(
+            #{jsid},
+            #{modelid}
+        )
+    </insert>
+
+    
+    <delete id="deleteJuesemodelBy${table.pkColumn.variableSpellSqlName}" parameterType="${table.pkColumn.javaType}">
+        DELETE FROM juesemodel WHERE ${table.pkColumn.sqlName} = #{${table.pkColumn.variableName}}
+    </delete>
+
+    <update id="updateJuesemodel" parameterType="com.wang.entity.Juesemodel">
+        UPDATE juesemodel
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(jsid)">
+                jsid = #{jsid} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(modelid)">
+                modelid = #{modelid}
+            </if>
+        </set>
+        WHERE userid = #{${table.pkColumn.variableName}}
+    </update>
+
+    <select id="searchJuesemodelByParams" parameterType="map" resultMap="juesemodelMap">
+        SELECT
+        <include refid="juesemodelBaseColumnSql"/>
+        FROM juesemodel
+        <include refid="juesemodelBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.wang.entity.Juesemodel" id="juesemodelMap">
+        <id column="userid" property="${table.pkColumn.variableName}"/>
+        <result column="jsid" property="jsid"/>
+        <result column="modelid" property="modelid"/>
+    </resultMap>
+
+</mapper>

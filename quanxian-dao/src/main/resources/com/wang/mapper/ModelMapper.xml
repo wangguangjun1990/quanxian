@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wang.mapper.ModelMapper">
+
+    <sql id="modelBaseColumnSql">
+        modelid,
+        modelname,
+        modeljibie,
+        prentmodelid,
+        modeladdress,
+        modelmiaoshu,
+        issonmodel,
+        paixuid
+    </sql>
+
+    <sql id="modelBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.modelid)">
+                    modelid = #{map.modelid}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.modelname)">
+                    AND modelname = #{map.modelname}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.modeljibie)">
+                    AND modeljibie = #{map.modeljibie}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.prentmodelid)">
+                    AND prentmodelid = #{map.prentmodelid}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.modeladdress)">
+                    AND modeladdress = #{map.modeladdress}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.modelmiaoshu)">
+                    AND modelmiaoshu = #{map.modelmiaoshu}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.issonmodel)">
+                    AND issonmodel = #{map.issonmodel}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.paixuid)">
+                    AND paixuid = #{map.paixuid}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertModel" parameterType="com.wang.entity.Model">
+        INSERT INTO model(
+        <include refid="modelBaseColumnSql"/>
+        )VALUES(
+            #{modelid},
+            #{modelname},
+            #{modeljibie},
+            #{prentmodelid},
+            #{modeladdress},
+            #{modelmiaoshu},
+            #{issonmodel},
+            #{paixuid}
+        )
+    </insert>
+
+    
+    <delete id="deleteModelByModelid" parameterType="Integer">
+        DELETE FROM model WHERE modelid = #{modelid}
+    </delete>
+
+    <update id="updateModel" parameterType="com.wang.entity.Model">
+        UPDATE model
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(modelname)">
+                modelname = #{modelname} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(modeljibie)">
+                modeljibie = #{modeljibie} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(prentmodelid)">
+                prentmodelid = #{prentmodelid} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(modeladdress)">
+                modeladdress = #{modeladdress} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(modelmiaoshu)">
+                modelmiaoshu = #{modelmiaoshu} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(issonmodel)">
+                issonmodel = #{issonmodel} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(paixuid)">
+                paixuid = #{paixuid} ,
+            </if>
+        </set>
+        WHERE modelid = #{modelid}
+    </update>
+
+    <select id="searchModelByParams" parameterType="map" resultMap="modelMap">
+        SELECT
+        <include refid="modelBaseColumnSql"/>
+        FROM model
+        <include refid="modelBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.wang.entity.Model" id="modelMap">
+        <id column="modelid" property="modelid"/>
+        <result column="modelname" property="modelname"/>
+        <result column="modeljibie" property="modeljibie"/>
+        <result column="prentmodelid" property="prentmodelid"/>
+        <result column="modeladdress" property="modeladdress"/>
+        <result column="modelmiaoshu" property="modelmiaoshu"/>
+        <result column="issonmodel" property="issonmodel"/>
+        <result column="paixuid" property="paixuid"/>
+    </resultMap>
+
+</mapper>
