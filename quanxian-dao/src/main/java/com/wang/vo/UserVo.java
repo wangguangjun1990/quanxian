@@ -2,7 +2,7 @@ package com.wang.vo;
 
 /**
  * 
- * @author wangguangjun
+ * @author wanlun
  */
 public class UserVo {
 	/**

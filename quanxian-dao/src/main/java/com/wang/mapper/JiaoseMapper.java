@@ -16,8 +16,8 @@ public interface JiaoseMapper {
 
 	void updateJiaose(Jiaose jiaose);
 
-	Page<Jiaose> searchJiaoseByParams(@Param("map")Map<String, String> map , Pageable pageable);
+	Page<Jiaose> searchJiaoseByParams(@Param("map") Map<String, String> map, Pageable pageable);
 
-	List<Jiaose> searchJiaoseByParams(@Param("map")Map<String, String> map);
+	List<Jiaose> searchJiaoseByParams(@Param("map") Map<String, String> map);
 
 } 

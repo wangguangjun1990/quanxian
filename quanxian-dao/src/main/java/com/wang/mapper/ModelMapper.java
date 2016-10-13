@@ -16,8 +16,8 @@ public interface ModelMapper {
 
 	void updateModel(Model model);
 
-	Page<Model> searchModelByParams(@Param("map")Map<String, String> map , Pageable pageable);
+	Page<Model> searchModelByParams(@Param("map") Map<String, String> map, Pageable pageable);
 
-	List<Model> searchModelByParams(@Param("map")Map<String, String> map);
+	List<Model> searchModelByParams(@Param("map") Map<String, String> map);
 
 } 
