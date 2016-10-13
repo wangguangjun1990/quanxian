@@ -66,4 +66,19 @@
         <result column="modelid" property="modelid"/>
     </resultMap>
 
+<!--通过jsidcha-->
+    <select id="searchJuesemodelByParams1" parameterType="int" resultMap="juesemodelMap1">
+      SELECT juesemodel.jsmodelid,juesemodel.jsid,juesemodel.modelid,model.modelname,jiaose.jsname
+      FROM  ((juesemodel JOIN jiaose ON juesemodel.jsid=jiaose.jsid) JOIN model ON juesemodel.modelid=
+      model.modelid) where juesemodel.jsid=#{jsid}
+    </select>
+
+    <resultMap type="com.wang.vo.JuesemodelVo" id="juesemodelMap1">
+        <id column="jsmodelid" property="jsmodelid"/>
+        <result column="jsid" property="jsid"/>
+        <result column="modelid" property="modelid"/>
+        <result column="modelname" property="modelname"/>
+        <result column="jsname" property="jsname"/>
+    </resultMap>
+
 </mapper>

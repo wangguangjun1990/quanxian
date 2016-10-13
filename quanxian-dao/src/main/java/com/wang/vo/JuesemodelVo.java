@@ -21,6 +21,26 @@ public class JuesemodelVo {
 	 * 角色模块对应表的角色ID
 	 * @param jsid
 	 */
+	private String jsname;
+
+	private String modelname;
+
+	public String getJsname() {
+		return jsname;
+	}
+
+	public void setJsname(String jsname) {
+		this.jsname = jsname;
+	}
+
+	public String getModelname() {
+		return modelname;
+	}
+
+	public void setModelname(String modelname) {
+		this.modelname = modelname;
+	}
+
 	public void setJsid(Integer jsid){
 		this.jsid = jsid;
 	}

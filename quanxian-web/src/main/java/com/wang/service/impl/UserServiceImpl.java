@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
    private   UserMapper userMapper;
 
     @Override
-    public User check(String name, int pwd) {
+    public User check(String name, String pwd) {
         Map map=new HashMap();
         map.put("username",name);
         map.put("passward",pwd);

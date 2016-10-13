@@ -3,6 +3,7 @@ package com.wang.mapper;
 import java.util.List;
 import java.util.Map;
 
+import com.wang.vo.JuesemodelVo;
 import org.apache.ibatis.annotations.Param;
 import com.wang.entity.Juesemodel;
 import com.fc.platform.commons.page.Page;
@@ -19,5 +20,7 @@ public interface JuesemodelMapper {
 	Page<Juesemodel> searchJuesemodelByParams(@Param("map") Map<String, String> map, Pageable pageable);
 
 	List<Juesemodel> searchJuesemodelByParams(@Param("map") Map<String, String> map);
+
+	List<JuesemodelVo> searchJuesemodelByParams1(Integer jsid);
 
 } 
