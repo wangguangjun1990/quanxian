@@ -12,12 +12,12 @@ public interface JuesemodelMapper {
 
 	void insertJuesemodel(Juesemodel juesemodel);
 
-	void deleteJuesemodelBy${table.pkColumn.variableSpellSqlName}(${table.pkColumn.javaType} ${table.pkColumn.variableName});
+	void deleteJuesemodelByJsmodelid(Integer jsmodelid);
 
 	void updateJuesemodel(Juesemodel juesemodel);
 
-	Page<Juesemodel> searchJuesemodelByParams(@Param("map")Map<String, String> map , Pageable pageable);
+	Page<Juesemodel> searchJuesemodelByParams(@Param("map") Map<String, String> map, Pageable pageable);
 
-	List<Juesemodel> searchJuesemodelByParams(@Param("map")Map<String, String> map);
+	List<Juesemodel> searchJuesemodelByParams(@Param("map") Map<String, String> map);
 
 } 

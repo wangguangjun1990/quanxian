@@ -2,7 +2,7 @@ package com.wang.entity;
 
 /**
  * 
- * @author wangguangjun
+ * @author wanlun
  */
 public class User {
 	/**

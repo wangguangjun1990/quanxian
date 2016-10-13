@@ -2,7 +2,7 @@ package com.wang.entity;
 
 /**
  * 
- * @author wangguangjun
+ * @author wanlun
  */
 public class Juesemodel {
 	/**
@@ -13,6 +13,10 @@ public class Juesemodel {
 	 *  角色模块对应表的模块ID
 	 */
 	private Integer modelid;
+	/**
+	 *  对应关系表id
+	 */
+	private Integer jsmodelid;
 	/**
 	 * 角色模块对应表的角色ID
 	 * @param jsid
@@ -42,5 +46,20 @@ public class Juesemodel {
      */	
     public Integer getModelid(){
     	return modelid;
+    }
+	/**
+	 * 对应关系表id
+	 * @param jsmodelid
+	 */
+	public void setJsmodelid(Integer jsmodelid){
+		this.jsmodelid = jsmodelid;
+	}
+	
+    /**
+     * 对应关系表id
+     * @return
+     */	
+    public Integer getJsmodelid(){
+    	return jsmodelid;
     }
 }

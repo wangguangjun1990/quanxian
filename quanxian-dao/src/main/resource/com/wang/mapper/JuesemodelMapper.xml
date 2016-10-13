@@ -5,7 +5,8 @@
 
     <sql id="juesemodelBaseColumnSql">
         jsid,
-        modelid
+        modelid,
+        jsmodelid
     </sql>
 
     <sql id="juesemodelBaseWhereSql">
@@ -17,6 +18,9 @@
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.modelid)">
                     AND modelid = #{map.modelid}
                 </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.jsmodelid)">
+                    AND jsmodelid = #{map.jsmodelid}
+                </if>
             </where>
         </if>
     </sql>
@@ -26,13 +30,14 @@
         <include refid="juesemodelBaseColumnSql"/>
         )VALUES(
             #{jsid},
-            #{modelid}
+            #{modelid},
+            #{jsmodelid}
         )
     </insert>
 
     
-    <delete id="deleteJuesemodelBy${table.pkColumn.variableSpellSqlName}" parameterType="${table.pkColumn.javaType}">
-        DELETE FROM juesemodel WHERE ${table.pkColumn.sqlName} = #{${table.pkColumn.variableName}}
+    <delete id="deleteJuesemodelByJsmodelid" parameterType="Integer">
+        DELETE FROM juesemodel WHERE jsmodelid = #{jsmodelid}
     </delete>
 
     <update id="updateJuesemodel" parameterType="com.wang.entity.Juesemodel">
@@ -42,10 +47,10 @@
                 jsid = #{jsid} ,
             </if>
             <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(modelid)">
-                modelid = #{modelid}
+                modelid = #{modelid} ,
             </if>
         </set>
-        WHERE userid = #{${table.pkColumn.variableName}}
+        WHERE jsmodelid = #{jsmodelid}
     </update>
 
     <select id="searchJuesemodelByParams" parameterType="map" resultMap="juesemodelMap">
@@ -56,7 +61,7 @@
     </select>
 
     <resultMap type="com.wang.entity.Juesemodel" id="juesemodelMap">
-        <id column="userid" property="${table.pkColumn.variableName}"/>
+        <id column="jsmodelid" property="jsmodelid"/>
         <result column="jsid" property="jsid"/>
         <result column="modelid" property="modelid"/>
     </resultMap>
